@@ -1,5 +1,5 @@
 # typescript-practice
 
-##Resources/Helpful Links
+## Resources/Helpful Links
 
 https://typehero.dev/
