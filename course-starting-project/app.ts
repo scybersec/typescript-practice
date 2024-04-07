@@ -1,13 +1,26 @@
-const person: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string];
-} = {
+// const person: {
+//   name: string;
+//   age: number;
+//   hobbies: string[];
+//   role: [number, string];
+// } = {
+//   name: "Shimul",
+//   age: 30,
+//   hobbies: ["Writing", "Filmmaking"],
+//   role: [2, "author"],
+// };
+
+enum Role {
+  ADMIN = 'ADMIN',
+  READ_ONLY = 'READ_ONLY',
+  AUTHOR = 'AUTHOR',
+}
+
+const person = {
   name: "Shimul",
   age: 30,
   hobbies: ["Writing", "Filmmaking"],
-  role: [2, "author"],
+  role: Role.ADMIN,
 };
 
 // person.role.push("admin");
@@ -16,9 +29,13 @@ const person: {
 let favoriteActivities: string[];
 favoriteActivities = ["Basketball"];
 
-console.log(person.role);
+console.log(person.name);
 
 for (const hobby of person.hobbies) {
   console.log(hobby.toUpperCase());
   // console.log(favoriteActivities.map()); // !!! ERROR !!!
+}
+
+if (person.role === Role.ADMIN) {
+  console.log("is admin");
 }
