@@ -60,8 +60,6 @@ console.log(hobby1);
 console.log(hobby2);
 console.log(extraHobbies);
 
-const { firstName: userName, age} = person; 
+const { firstName: userName, age } = person;
 
 console.log(userName, age);
-
-
