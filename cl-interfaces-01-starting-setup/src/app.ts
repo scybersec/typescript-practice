@@ -1,10 +1,10 @@
-class Department {
+abstract class Department {
   static fiscalYear = 2024;
   // private id: string;
   // private name: string;
   protected employees: string[] = [];
 
-  constructor(public readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
     console.log(Department.fiscalYear);
@@ -14,9 +14,7 @@ class Department {
     return { name: name };
   }
 
-  describe(this: Department) {
-    console.log(`Department (${this.id}): ${this.name}`);
-  }
+  abstract describe(this: Department): void;
 
   addEmployee(employee: string) {
     this.employees.push(employee);
@@ -33,6 +31,9 @@ class ITDepartment extends Department {
   constructor(id: string, admins: string[]) {
     super(id, "IT");
     this.admins = admins;
+  }
+  describe() {
+    console.log("IT Department - ID:");
   }
 }
 
@@ -51,6 +52,10 @@ class AccountingDepartment extends Department {
       throw new Error("Please pass in a valid value");
     }
     this.addReport(value);
+  }
+
+  describe() {
+    console.log("Accounting Department - ID: " + this.id);
   }
 
   constructor(id: string, private reports: string[]) {
@@ -91,14 +96,15 @@ console.log(it);
 
 const accounting = new AccountingDepartment("d1", []);
 
-accounting.mostRecentReport = "";
+accounting.mostRecentReport = "Year end report";
 console.log(accounting.mostRecentReport);
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Brian");
-accounting.printEmployeeInformation();
+accounting.describe();
+// accounting.printReports();
+// accounting.printEmployeeInformation();
 accounting.addReport("Something went wrong");
-accounting.printReports();
 
 // console.log(accounting);
 // accounting.addEmployee("Max");
